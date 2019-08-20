@@ -25,3 +25,5 @@ hs_err_pid*
 /kqbot_alpha.iml
 /logs/
 /target/
+/out/
+/src/main/java/META-INF/
