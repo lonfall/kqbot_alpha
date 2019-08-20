@@ -41,7 +41,10 @@ public class MsgListener extends IcqListener {
         System.out.println("---------------接收到一条群聊消息");
         System.out.println("sender:" + event.getSender().getId());
         System.out.println("message" + event.getMessage());
-        commandAt(event);
+        String answer = commandAt(event);
+        if (null != answer && !"".equals(answer)) {
+            event.respond(answer);
+        }
     }
 
     /**
@@ -54,17 +57,21 @@ public class MsgListener extends IcqListener {
         System.out.println("---------------接收到一条讨论组消息");
         System.out.println("sender:" + event.getSender().getId());
         System.out.println("message:" + event.getMessage());
-        commandAt(event);
+        String answer = commandAt(event);
+        if (null != answer && !"".equals(answer)) {
+            event.respond(answer);
+        }
     }
 
-    private void commandAt(EventGroupOrDiscussMessage event) {
+    private String commandAt(EventGroupOrDiscussMessage event) {
         String message = event.getMessage();
         Long selfId = event.getSelfId();
         if (message.indexOf("[CQ:at,qq=" + selfId + "]") != -1) {
             String command = message.replace("[CQ:at,qq=" + selfId + "]", "").trim();
             System.out.println("指令：" + command);
             String answer = AtHandler.commandHandle(command, new Date(event.getTime() * 1000));
-            event.respond(answer);
+            return answer;
         }
+        return "";
     }
 }
