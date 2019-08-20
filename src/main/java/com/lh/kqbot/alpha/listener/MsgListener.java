@@ -27,7 +27,7 @@ public class MsgListener extends IcqListener {
         System.out.println("---------------接收到一条消息");
         System.out.println("sender:" + event.getSender().getId());
         System.out.println("message" + event.getMessage());
-        String answer = AtHandler.commandHandle(event.getMessage(), new Date(event.getTime()));
+        String answer = AtHandler.commandHandle(event.getMessage(), new Date(event.getTime() * 1000));
         event.respond(answer);
     }
 

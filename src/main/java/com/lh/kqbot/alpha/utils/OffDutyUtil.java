@@ -2,6 +2,7 @@ package com.lh.kqbot.alpha.utils;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * @auther: loneyfall
@@ -11,10 +12,10 @@ import java.util.Date;
 public class OffDutyUtil {
 
     public static String getOffDutyTime(Date date) {
-        Calendar now = Calendar.getInstance();
+        Calendar now = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
         now.setTime(date);
 
-        Calendar offDuty = Calendar.getInstance();
+        Calendar offDuty = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
         offDuty.setTime(date);
         offDuty.set(Calendar.HOUR_OF_DAY, 18);
         offDuty.set(Calendar.MINUTE, 0);
