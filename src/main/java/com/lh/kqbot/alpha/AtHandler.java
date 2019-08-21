@@ -1,5 +1,6 @@
 package com.lh.kqbot.alpha;
 
+import com.lh.kqbot.alpha.utils.ChatBotForQingYunKeUtil;
 import com.lh.kqbot.alpha.utils.OffDutyUtil;
 
 import java.util.Date;
@@ -18,6 +19,10 @@ public class AtHandler {
             return OffDutyUtil.getOffDutyTime(time);
         } else if ("傻逼".equals(command)) {
             return "唐家七傻逼!";
+        }
+        String resp = ChatBotForQingYunKeUtil.sendTalk(command);
+        if (null != resp && !"".equals(resp)) {
+            return resp;
         }
         return "对不起，稽器人目前智力处于0岁水平，还不能回答你的这个问题";
     }
