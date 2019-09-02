@@ -2,7 +2,10 @@ package com.lh.kqbot.alpha;
 
 import com.lh.kqbot.alpha.utils.ChatBotForQingYunKeUtil;
 import com.lh.kqbot.alpha.utils.OffDutyUtil;
+import com.lh.kqbot.alpha.utils.UTCFormartUtil;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -19,6 +22,8 @@ public class AtHandler {
             return OffDutyUtil.getOffDutyTime(time);
         } else if ("傻逼".equals(command)) {
             return "唐家七傻逼!";
+        } else if (command.startsWith("utc")) {
+            return UTCFormartUtil.formartUTC(command.replace("utc", "").trim());
         }
         String resp = ChatBotForQingYunKeUtil.sendTalk(command);
         if (null != resp && !"".equals(resp)) {
