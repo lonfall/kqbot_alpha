@@ -8,7 +8,7 @@ import java.util.TimeZone;
 /**
  * @auther: loneyfall
  * @date: 2019/9/2
- * @description:
+ * @description: 计算UTC标准时工具
  */
 public class UTCFormartUtil {
 

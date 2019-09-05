@@ -1,5 +1,6 @@
 package com.lh.kqbot.alpha;
 
+import com.lh.kqbot.alpha.utils.CalendarUtil;
 import com.lh.kqbot.alpha.utils.ChatBotForQingYunKeUtil;
 import com.lh.kqbot.alpha.utils.OffDutyUtil;
 import com.lh.kqbot.alpha.utils.UTCFormartUtil;
@@ -16,14 +17,14 @@ import java.util.Date;
 public class AtHandler {
 
     public static String commandHandle(String command, Date time) {
-        if ("下班".equals(command)) {
-            return OffDutyUtil.getOffDutyTime(time);
-        } else if ("我想下班".equals(command)) {
+        if ("下班".equals(command) || "我想下班".equals(command)) {
             return OffDutyUtil.getOffDutyTime(time);
         } else if ("傻逼".equals(command)) {
             return "唐家七傻逼!";
         } else if (command.startsWith("utc")) {
             return UTCFormartUtil.formartUTC(command.replace("utc", "").trim());
+        } else if ("放假".equals(command) || "我想放假".equals(command)) {
+            return CalendarUtil.getNextHoliday();
         }
         String resp = ChatBotForQingYunKeUtil.sendTalk(command);
         if (null != resp && !"".equals(resp)) {

@@ -12,7 +12,7 @@ import java.net.URLEncoder;
 /**
  * @auther: loneyfall
  * @date: 2019/8/21
- * @description:
+ * @description: 青云客机器人接口
  */
 public class ChatBotForQingYunKeUtil {
     private static final String BASE_URL = "http://api.qingyunke.com/api.php?key=free&appid=0&msg=";
