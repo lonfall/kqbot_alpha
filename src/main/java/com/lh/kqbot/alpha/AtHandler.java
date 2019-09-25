@@ -1,9 +1,6 @@
 package com.lh.kqbot.alpha;
 
-import com.lh.kqbot.alpha.utils.CalendarUtil;
-import com.lh.kqbot.alpha.utils.ChatBotForQingYunKeUtil;
-import com.lh.kqbot.alpha.utils.OffDutyUtil;
-import com.lh.kqbot.alpha.utils.UTCFormartUtil;
+import com.lh.kqbot.alpha.utils.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -25,6 +22,8 @@ public class AtHandler {
             return UTCFormartUtil.formartUTC(command.replace("utc", "").trim());
         } else if ("放假".equals(command) || "我想放假".equals(command)) {
             return CalendarUtil.getNextHoliday();
+        } else if ("鸡汤".equals(command) || "毒鸡汤".equals(command) || "来碗鸡汤".equals(command)) {
+            return ChickenSoupUtil.poisoned();
         }
         String resp = ChatBotForQingYunKeUtil.sendTalk(command);
         if (null != resp && !"".equals(resp)) {
